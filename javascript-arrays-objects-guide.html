@@ -281,6 +281,7 @@
                 <li><a href="#objects-intro">Objects Basics</a></li>
                 <li><a href="#object-methods">Object Methods</a></li>
                 <li><a href="#advanced">Advanced Topics</a></li>
+                <li><a href="#summary">📋 Summary Tables</a></li>
                 <li><a href="#practice">Practice</a></li>
             </ul>
         </nav>
@@ -1484,6 +1485,462 @@ console.log(person); // {name: 'John', age: 30}
                             <li>concat()</li>
                             <li>flat()</li>
                             <li>flatMap()</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUMMARY TABLES -->
+            <section id="summary">
+                <h2>📋 Quick Reference Summary Tables</h2>
+
+                <h3>Array Methods Summary</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Purpose</th>
+                            <th>Returns</th>
+                            <th>Mutates?</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>push()</strong></td>
+                            <td>Add to end</td>
+                            <td>New length</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.push(5)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>pop()</strong></td>
+                            <td>Remove from end</td>
+                            <td>Removed element</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.pop()</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>unshift()</strong></td>
+                            <td>Add to beginning</td>
+                            <td>New length</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.unshift(1)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>shift()</strong></td>
+                            <td>Remove from beginning</td>
+                            <td>Removed element</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.shift()</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>splice()</strong></td>
+                            <td>Add/remove at position</td>
+                            <td>Removed elements</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.splice(1, 2, 'new')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>slice()</strong></td>
+                            <td>Extract portion</td>
+                            <td>New array</td>
+                            <td>❌ No</td>
+                            <td><code>arr.slice(1, 3)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>concat()</strong></td>
+                            <td>Merge arrays</td>
+                            <td>New array</td>
+                            <td>❌ No</td>
+                            <td><code>arr1.concat(arr2)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>join()</strong></td>
+                            <td>Convert to string</td>
+                            <td>String</td>
+                            <td>❌ No</td>
+                            <td><code>arr.join(', ')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>reverse()</strong></td>
+                            <td>Reverse order</td>
+                            <td>Reversed array</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.reverse()</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>sort()</strong></td>
+                            <td>Sort elements</td>
+                            <td>Sorted array</td>
+                            <td>✅ Yes</td>
+                            <td><code>arr.sort((a,b) => a-b)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>forEach()</strong></td>
+                            <td>Loop through items</td>
+                            <td>undefined</td>
+                            <td>❌ No</td>
+                            <td><code>arr.forEach(x => {...})</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>map()</strong></td>
+                            <td>Transform each item</td>
+                            <td>New array</td>
+                            <td>❌ No</td>
+                            <td><code>arr.map(x => x * 2)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>filter()</strong></td>
+                            <td>Select by condition</td>
+                            <td>New array</td>
+                            <td>❌ No</td>
+                            <td><code>arr.filter(x => x > 5)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>find()</strong></td>
+                            <td>Find first match</td>
+                            <td>Element or undefined</td>
+                            <td>❌ No</td>
+                            <td><code>arr.find(x => x > 5)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>findIndex()</strong></td>
+                            <td>Find index of match</td>
+                            <td>Index or -1</td>
+                            <td>❌ No</td>
+                            <td><code>arr.findIndex(x => x > 5)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>indexOf()</strong></td>
+                            <td>Find index of value</td>
+                            <td>Index or -1</td>
+                            <td>❌ No</td>
+                            <td><code>arr.indexOf('apple')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>lastIndexOf()</strong></td>
+                            <td>Find last index of value</td>
+                            <td>Index or -1</td>
+                            <td>❌ No</td>
+                            <td><code>arr.lastIndexOf('apple')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>includes()</strong></td>
+                            <td>Check if exists</td>
+                            <td>Boolean</td>
+                            <td>❌ No</td>
+                            <td><code>arr.includes('apple')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>reduce()</strong></td>
+                            <td>Reduce to single value</td>
+                            <td>Any value</td>
+                            <td>❌ No</td>
+                            <td><code>arr.reduce((a,b) => a+b)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>some()</strong></td>
+                            <td>Test if any passes</td>
+                            <td>Boolean</td>
+                            <td>❌ No</td>
+                            <td><code>arr.some(x => x > 5)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>every()</strong></td>
+                            <td>Test if all pass</td>
+                            <td>Boolean</td>
+                            <td>❌ No</td>
+                            <td><code>arr.every(x => x > 0)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>flat()</strong></td>
+                            <td>Flatten nested arrays</td>
+                            <td>New array</td>
+                            <td>❌ No</td>
+                            <td><code>arr.flat(2)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>flatMap()</strong></td>
+                            <td>Map then flatten</td>
+                            <td>New array</td>
+                            <td>❌ No</td>
+                            <td><code>arr.flatMap(x => [x, x*2])</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Object Methods Summary</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Purpose</th>
+                            <th>Returns</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Object.keys()</strong></td>
+                            <td>Get all property names</td>
+                            <td>Array of strings</td>
+                            <td><code>Object.keys(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.values()</strong></td>
+                            <td>Get all property values</td>
+                            <td>Array of values</td>
+                            <td><code>Object.values(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.entries()</strong></td>
+                            <td>Get [key, value] pairs</td>
+                            <td>Array of arrays</td>
+                            <td><code>Object.entries(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.assign()</strong></td>
+                            <td>Copy/merge objects</td>
+                            <td>Target object</td>
+                            <td><code>Object.assign({}, obj1, obj2)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.fromEntries()</strong></td>
+                            <td>Create object from entries</td>
+                            <td>New object</td>
+                            <td><code>Object.fromEntries(entries)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.hasOwn()</strong></td>
+                            <td>Check property exists</td>
+                            <td>Boolean</td>
+                            <td><code>Object.hasOwn(obj, 'name')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.freeze()</strong></td>
+                            <td>Make immutable</td>
+                            <td>Frozen object</td>
+                            <td><code>Object.freeze(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.seal()</strong></td>
+                            <td>Prevent add/delete</td>
+                            <td>Sealed object</td>
+                            <td><code>Object.seal(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.isFrozen()</strong></td>
+                            <td>Check if frozen</td>
+                            <td>Boolean</td>
+                            <td><code>Object.isFrozen(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object.isSealed()</strong></td>
+                            <td>Check if sealed</td>
+                            <td>Boolean</td>
+                            <td><code>Object.isSealed(obj)</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Static Array Methods Summary</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Purpose</th>
+                            <th>Returns</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Array.from()</strong></td>
+                            <td>Create array from iterable</td>
+                            <td>New array</td>
+                            <td><code>Array.from('hello')</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Array.isArray()</strong></td>
+                            <td>Check if value is array</td>
+                            <td>Boolean</td>
+                            <td><code>Array.isArray([1,2,3])</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Array.of()</strong></td>
+                            <td>Create array from arguments</td>
+                            <td>New array</td>
+                            <td><code>Array.of(1, 2, 3)</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Common Use Cases - Quick Guide</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>I want to...</th>
+                            <th>Use this method</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transform each element</td>
+                            <td><strong>map()</strong></td>
+                            <td><code>numbers.map(x => x * 2)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Get elements matching condition</td>
+                            <td><strong>filter()</strong></td>
+                            <td><code>users.filter(u => u.age > 18)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Find one element</td>
+                            <td><strong>find()</strong></td>
+                            <td><code>users.find(u => u.id === 5)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Check if element exists</td>
+                            <td><strong>includes()</strong></td>
+                            <td><code>arr.includes('apple')</code></td>
+                        </tr>
+                        <tr>
+                            <td>Check if any element matches</td>
+                            <td><strong>some()</strong></td>
+                            <td><code>arr.some(x => x > 10)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Check if all elements match</td>
+                            <td><strong>every()</strong></td>
+                            <td><code>arr.every(x => x > 0)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Calculate sum/total</td>
+                            <td><strong>reduce()</strong></td>
+                            <td><code>arr.reduce((sum, x) => sum + x, 0)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Loop through items</td>
+                            <td><strong>forEach()</strong></td>
+                            <td><code>arr.forEach(x => console.log(x))</code></td>
+                        </tr>
+                        <tr>
+                            <td>Sort numbers ascending</td>
+                            <td><strong>sort()</strong></td>
+                            <td><code>arr.sort((a, b) => a - b)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Sort numbers descending</td>
+                            <td><strong>sort()</strong></td>
+                            <td><code>arr.sort((a, b) => b - a)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Sort strings alphabetically</td>
+                            <td><strong>sort()</strong></td>
+                            <td><code>arr.sort()</code></td>
+                        </tr>
+                        <tr>
+                            <td>Get part of array</td>
+                            <td><strong>slice()</strong></td>
+                            <td><code>arr.slice(1, 4)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Add to end</td>
+                            <td><strong>push()</strong></td>
+                            <td><code>arr.push('new')</code></td>
+                        </tr>
+                        <tr>
+                            <td>Add to beginning</td>
+                            <td><strong>unshift()</strong></td>
+                            <td><code>arr.unshift('new')</code></td>
+                        </tr>
+                        <tr>
+                            <td>Remove from end</td>
+                            <td><strong>pop()</strong></td>
+                            <td><code>arr.pop()</code></td>
+                        </tr>
+                        <tr>
+                            <td>Remove from beginning</td>
+                            <td><strong>shift()</strong></td>
+                            <td><code>arr.shift()</code></td>
+                        </tr>
+                        <tr>
+                            <td>Join arrays</td>
+                            <td><strong>concat()</strong></td>
+                            <td><code>arr1.concat(arr2)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Convert array to string</td>
+                            <td><strong>join()</strong></td>
+                            <td><code>arr.join(', ')</code></td>
+                        </tr>
+                        <tr>
+                            <td>Remove duplicates</td>
+                            <td><strong>[...new Set()]</strong></td>
+                            <td><code>[...new Set(arr)]</code></td>
+                        </tr>
+                        <tr>
+                            <td>Get object keys</td>
+                            <td><strong>Object.keys()</strong></td>
+                            <td><code>Object.keys(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Get object values</td>
+                            <td><strong>Object.values()</strong></td>
+                            <td><code>Object.values(obj)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Loop through object</td>
+                            <td><strong>Object.entries()</strong></td>
+                            <td><code>Object.entries(obj).forEach(...)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Copy object</td>
+                            <td><strong>{...obj}</strong></td>
+                            <td><code>let copy = {...obj}</code></td>
+                        </tr>
+                        <tr>
+                            <td>Merge objects</td>
+                            <td><strong>Object.assign()</strong></td>
+                            <td><code>Object.assign({}, obj1, obj2)</code></td>
+                        </tr>
+                        <tr>
+                            <td>Check if property exists</td>
+                            <td><strong>Object.hasOwn()</strong></td>
+                            <td><code>Object.hasOwn(obj, 'name')</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Performance Tips</h3>
+                <div class="comparison-table">
+                    <div class="comparison-card">
+                        <h4>⚡ Fast Methods</h4>
+                        <ul>
+                            <li><strong>push/pop</strong> - O(1)</li>
+                            <li><strong>Access by index</strong> - O(1)</li>
+                            <li><strong>Object property access</strong> - O(1)</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>🐌 Slower Methods</h4>
+                        <ul>
+                            <li><strong>shift/unshift</strong> - O(n)</li>
+                            <li><strong>splice</strong> - O(n)</li>
+                            <li><strong>indexOf/includes</strong> - O(n)</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>💡 Best Practices</h4>
+                        <ul>
+                            <li>Use <strong>map()</strong> instead of forEach() for transformations</li>
+                            <li>Use <strong>for...of</strong> for simple loops (fastest)</li>
+                            <li>Avoid nested loops with arrays</li>
+                            <li>Use Set for unique values (faster than filter)</li>
                         </ul>
                     </div>
                 </div>
