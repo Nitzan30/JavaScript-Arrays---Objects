@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays & Objects - Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #495057;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .method-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .method-name {
+            font-size: 1.3em;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .syntax {
+            background: #2d3748;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .example {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .output {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .interactive-demo {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .demo-output {
+            background: #2d3748;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            min-height: 50px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #dee2e6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 JavaScript Arrays & Objects</h1>
+            <p>Complete Guide to Arrays, Objects, and Their Methods</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#arrays-intro">Arrays Basics</a></li>
+                <li><a href="#array-methods">Array Methods</a></li>
+                <li><a href="#objects-intro">Objects Basics</a></li>
+                <li><a href="#object-methods">Object Methods</a></li>
+                <li><a href="#advanced">Advanced Topics</a></li>
+                <li><a href="#practice">Practice</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- ARRAYS INTRODUCTION -->
+            <section id="arrays-intro">
+                <h2>📚 Arrays - Introduction</h2>
+                
+                <h3>What is an Array?</h3>
+                <p>An array is an ordered collection of items (elements) stored in a single variable. Each element has a numbered position called an index (starting from 0).</p>
+
+                <div class="syntax">
+// Creating arrays
+let fruits = ['apple', 'banana', 'orange'];
+let numbers = [1, 2, 3, 4, 5];
+let mixed = [1, 'hello', true, null, {name: 'John'}];
+let empty = [];
+
+// Using Array constructor
+let arr = new Array(5); // Creates array with 5 empty slots
+let arr2 = new Array(1, 2, 3); // Creates [1, 2, 3]
+                </div>
+
+                <h3>Accessing Array Elements</h3>
+                <div class="syntax">
+let fruits = ['apple', 'banana', 'orange'];
+
+console.log(fruits[0]);     // 'apple' (first element)
+console.log(fruits[1]);     // 'banana'
+console.log(fruits[2]);     // 'orange'
+console.log(fruits.length); // 3 (number of elements)
+
+// Last element
+console.log(fruits[fruits.length - 1]); // 'orange'
+                </div>
+
+                <h3>Modifying Arrays</h3>
+                <div class="syntax">
+let colors = ['red', 'blue'];
+
+// Change element
+colors[0] = 'green';  // ['green', 'blue']
+
+// Add element at end
+colors[colors.length] = 'yellow'; // ['green', 'blue', 'yellow']
+                </div>
+
+                <div class="note">
+                    <strong>Important:</strong> Arrays in JavaScript are zero-indexed, meaning the first element is at position 0, not 1.
+                </div>
+            </section>
+
+            <!-- ARRAY METHODS -->
+            <section id="array-methods">
+                <h2>🔧 Array Methods - Complete Reference</h2>
+
+                <!-- ADDING/REMOVING ELEMENTS -->
+                <h3>Adding & Removing Elements</h3>
+
+                <div class="method-card">
+                    <div class="method-name">push() - Add to End</div>
+                    <p>Adds one or more elements to the end of an array and returns the new length.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana'];
+let newLength = fruits.push('orange', 'mango');
+
+console.log(fruits);     // ['apple', 'banana', 'orange', 'mango']
+console.log(newLength);  // 4
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> New array length</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">pop() - Remove from End</div>
+                    <p>Removes the last element from an array and returns that element.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange'];
+let removed = fruits.pop();
+
+console.log(fruits);   // ['apple', 'banana']
+console.log(removed);  // 'orange'
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> Removed element</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">unshift() - Add to Beginning</div>
+                    <p>Adds one or more elements to the beginning of an array and returns the new length.</p>
+                    <div class="syntax">
+let fruits = ['banana', 'orange'];
+let newLength = fruits.unshift('apple', 'mango');
+
+console.log(fruits);     // ['apple', 'mango', 'banana', 'orange']
+console.log(newLength);  // 4
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> New array length</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">shift() - Remove from Beginning</div>
+                    <p>Removes the first element from an array and returns that element.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange'];
+let removed = fruits.shift();
+
+console.log(fruits);   // ['banana', 'orange']
+console.log(removed);  // 'apple'
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> Removed element</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">splice() - Add/Remove at Any Position</div>
+                    <p>Adds or removes elements from an array at a specified position.</p>
+                    <div class="syntax">
+// Syntax: array.splice(start, deleteCount, item1, item2, ...)
+
+let fruits = ['apple', 'banana', 'orange', 'mango'];
+
+// Remove elements
+fruits.splice(1, 2);  // Remove 2 elements starting at index 1
+console.log(fruits);  // ['apple', 'mango']
+
+// Add elements
+fruits.splice(1, 0, 'grape', 'kiwi');  // Add at index 1, delete 0
+console.log(fruits);  // ['apple', 'grape', 'kiwi', 'mango']
+
+// Replace elements
+fruits.splice(1, 2, 'strawberry');  // Replace 2 elements at index 1
+console.log(fruits);  // ['apple', 'strawberry', 'mango']
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> Array of removed elements</div>
+                </div>
+
+                <!-- ITERATION METHODS -->
+                <h3>Iteration Methods (Loops)</h3>
+
+                <div class="method-card">
+                    <div class="method-name">forEach() - Execute Function for Each Element</div>
+                    <p>Executes a provided function once for each array element.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach((num, index, array) => {
+    console.log(`Index ${index}: ${num}`);
+});
+// Output:
+// Index 0: 1
+// Index 1: 2
+// Index 2: 3
+// Index 3: 4
+// Index 4: 5
+
+// Real example
+let total = 0;
+numbers.forEach(num => {
+    total += num;
+});
+console.log(total); // 15
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> undefined</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">map() - Transform Each Element</div>
+                    <p>Creates a new array with the results of calling a function on every element.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5];
+
+// Double each number
+let doubled = numbers.map(num => num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// Real example: Extract property from objects
+let users = [
+    {name: 'John', age: 25},
+    {name: 'Jane', age: 30},
+    {name: 'Bob', age: 35}
+];
+
+let names = users.map(user => user.name);
+console.log(names); // ['John', 'Jane', 'Bob']
+
+// With index and array
+let indexed = numbers.map((num, index) => `${index}: ${num}`);
+console.log(indexed); // ['0: 1', '1: 2', '2: 3', '3: 4', '4: 5']
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> New array with transformed elements</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">filter() - Select Elements by Condition</div>
+                    <p>Creates a new array with all elements that pass the test implemented by the provided function.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Get even numbers
+let evens = numbers.filter(num => num % 2 === 0);
+console.log(evens); // [2, 4, 6, 8, 10]
+
+// Real example: Filter users by age
+let users = [
+    {name: 'John', age: 25},
+    {name: 'Jane', age: 17},
+    {name: 'Bob', age: 35},
+    {name: 'Alice', age: 16}
+];
+
+let adults = users.filter(user => user.age >= 18);
+console.log(adults); // [{name: 'John', age: 25}, {name: 'Bob', age: 35}]
+
+// Multiple conditions
+let youngAdults = users.filter(user => user.age >= 18 && user.age < 30);
+console.log(youngAdults); // [{name: 'John', age: 25}]
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> New array with filtered elements</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">find() - Find First Matching Element</div>
+                    <p>Returns the first element that satisfies the provided testing function.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5];
+
+let firstEven = numbers.find(num => num % 2 === 0);
+console.log(firstEven); // 2
+
+// Real example: Find user by name
+let users = [
+    {id: 1, name: 'John'},
+    {id: 2, name: 'Jane'},
+    {id: 3, name: 'Bob'}
+];
+
+let user = users.find(user => user.name === 'Jane');
+console.log(user); // {id: 2, name: 'Jane'}
+
+// If not found
+let notFound = users.find(user => user.name === 'Alice');
+console.log(notFound); // undefined
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> First matching element or undefined</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">findIndex() - Find Index of First Match</div>
+                    <p>Returns the index of the first element that satisfies the provided testing function.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5];
+
+let index = numbers.findIndex(num => num > 3);
+console.log(index); // 3 (index of number 4)
+
+// Real example
+let users = [
+    {id: 1, name: 'John'},
+    {id: 2, name: 'Jane'},
+    {id: 3, name: 'Bob'}
+];
+
+let userIndex = users.findIndex(user => user.name === 'Jane');
+console.log(userIndex); // 1
+
+// If not found
+let notFound = users.findIndex(user => user.name === 'Alice');
+console.log(notFound); // -1
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Index of first match or -1</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">reduce() - Reduce Array to Single Value</div>
+                    <p>Executes a reducer function on each element, resulting in a single output value.</p>
+                    <div class="syntax">
+// Syntax: array.reduce((accumulator, currentValue, index, array) => {}, initialValue)
+
+let numbers = [1, 2, 3, 4, 5];
+
+// Sum all numbers
+let sum = numbers.reduce((total, num) => total + num, 0);
+console.log(sum); // 15
+
+// Find maximum
+let max = numbers.reduce((maximum, num) => {
+    return num > maximum ? num : maximum;
+}, numbers[0]);
+console.log(max); // 5
+
+// Real example: Count occurrences
+let fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+let count = fruits.reduce((acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+}, {});
+console.log(count); // {apple: 3, banana: 2, orange: 1}
+
+// Group objects by property
+let users = [
+    {name: 'John', department: 'IT'},
+    {name: 'Jane', department: 'HR'},
+    {name: 'Bob', department: 'IT'}
+];
+
+let byDept = users.reduce((acc, user) => {
+    if (!acc[user.department]) {
+        acc[user.department] = [];
+    }
+    acc[user.department].push(user);
+    return acc;
+}, {});
+console.log(byDept);
+// {
+//   IT: [{name: 'John', department: 'IT'}, {name: 'Bob', department: 'IT'}],
+//   HR: [{name: 'Jane', department: 'HR'}]
+// }
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Single accumulated value</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">some() - Test If Any Element Passes</div>
+                    <p>Tests whether at least one element in the array passes the test.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5];
+
+let hasEven = numbers.some(num => num % 2 === 0);
+console.log(hasEven); // true
+
+let hasNegative = numbers.some(num => num < 0);
+console.log(hasNegative); // false
+
+// Real example
+let users = [
+    {name: 'John', age: 25, premium: false},
+    {name: 'Jane', age: 30, premium: true},
+    {name: 'Bob', age: 35, premium: false}
+];
+
+let hasPremium = users.some(user => user.premium);
+console.log(hasPremium); // true
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Boolean (true/false)</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">every() - Test If All Elements Pass</div>
+                    <p>Tests whether all elements in the array pass the test.</p>
+                    <div class="syntax">
+let numbers = [2, 4, 6, 8, 10];
+
+let allEven = numbers.every(num => num % 2 === 0);
+console.log(allEven); // true
+
+let allPositive = numbers.every(num => num > 0);
+console.log(allPositive); // true
+
+// Real example
+let users = [
+    {name: 'John', age: 25},
+    {name: 'Jane', age: 30},
+    {name: 'Bob', age: 35}
+];
+
+let allAdults = users.every(user => user.age >= 18);
+console.log(allAdults); // true
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Boolean (true/false)</div>
+                </div>
+
+                <!-- SEARCHING METHODS -->
+                <h3>Searching Methods</h3>
+
+                <div class="method-card">
+                    <div class="method-name">indexOf() - Find Index of Element</div>
+                    <p>Returns the first index at which a given element can be found.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange', 'banana'];
+
+console.log(fruits.indexOf('banana'));      // 1
+console.log(fruits.indexOf('grape'));       // -1 (not found)
+console.log(fruits.indexOf('banana', 2));   // 3 (search from index 2)
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Index or -1</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">lastIndexOf() - Find Last Index of Element</div>
+                    <p>Returns the last index at which a given element can be found.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange', 'banana'];
+
+console.log(fruits.lastIndexOf('banana'));    // 3
+console.log(fruits.lastIndexOf('grape'));     // -1
+console.log(fruits.lastIndexOf('banana', 2)); // 1 (search backwards from index 2)
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Index or -1</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">includes() - Check If Element Exists</div>
+                    <p>Determines whether an array includes a certain element.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange'];
+
+console.log(fruits.includes('banana'));    // true
+console.log(fruits.includes('grape'));     // false
+console.log(fruits.includes('orange', 3)); // false (search from index 3)
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> Boolean (true/false)</div>
+                </div>
+
+                <!-- ARRAY MANIPULATION -->
+                <h3>Array Manipulation Methods</h3>
+
+                <div class="method-card">
+                    <div class="method-name">slice() - Extract Portion of Array</div>
+                    <p>Returns a shallow copy of a portion of an array into a new array.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange', 'mango', 'grape'];
+
+// slice(start, end) - end not included
+console.log(fruits.slice(1, 3));     // ['banana', 'orange']
+console.log(fruits.slice(2));        // ['orange', 'mango', 'grape']
+console.log(fruits.slice(-2));       // ['mango', 'grape']
+console.log(fruits.slice(1, -1));    // ['banana', 'orange', 'mango']
+console.log(fruits);                 // Original unchanged
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> New array (shallow copy)</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">concat() - Merge Arrays</div>
+                    <p>Merges two or more arrays into a new array.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana'];
+let vegetables = ['carrot', 'potato'];
+let grains = ['rice', 'wheat'];
+
+let food = fruits.concat(vegetables, grains);
+console.log(food); 
+// ['apple', 'banana', 'carrot', 'potato', 'rice', 'wheat']
+
+// Can also add individual elements
+let all = fruits.concat('orange', vegetables);
+console.log(all); 
+// ['apple', 'banana', 'orange', 'carrot', 'potato']
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> New merged array</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">join() - Convert Array to String</div>
+                    <p>Joins all elements of an array into a string.</p>
+                    <div class="syntax">
+let fruits = ['apple', 'banana', 'orange'];
+
+console.log(fruits.join());        // 'apple,banana,orange' (default comma)
+console.log(fruits.join(', '));    // 'apple, banana, orange'
+console.log(fruits.join(' - '));   // 'apple - banana - orange'
+console.log(fruits.join(''));      // 'applebananaorange'
+
+// Real example
+let path = ['home', 'user', 'documents', 'file.txt'];
+console.log(path.join('/'));       // 'home/user/documents/file.txt'
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> String</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">reverse() - Reverse Array Order</div>
+                    <p>Reverses the order of elements in an array.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3, 4, 5];
+numbers.reverse();
+console.log(numbers); // [5, 4, 3, 2, 1]
+
+// To reverse without mutating
+let original = [1, 2, 3, 4, 5];
+let reversed = [...original].reverse();
+console.log(original); // [1, 2, 3, 4, 5]
+console.log(reversed); // [5, 4, 3, 2, 1]
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> The reversed array</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">sort() - Sort Array Elements</div>
+                    <p>Sorts the elements of an array in place.</p>
+                    <div class="syntax">
+// Default sort (converts to strings)
+let fruits = ['banana', 'apple', 'orange', 'mango'];
+fruits.sort();
+console.log(fruits); // ['apple', 'banana', 'mango', 'orange']
+
+// Number sort (IMPORTANT!)
+let numbers = [10, 5, 40, 25, 1000, 1];
+numbers.sort(); // Wrong!
+console.log(numbers); // [1, 10, 1000, 25, 40, 5] (string sort)
+
+// Correct number sort
+numbers.sort((a, b) => a - b); // Ascending
+console.log(numbers); // [1, 5, 10, 25, 40, 1000]
+
+numbers.sort((a, b) => b - a); // Descending
+console.log(numbers); // [1000, 40, 25, 10, 5, 1]
+
+// Sort objects
+let users = [
+    {name: 'John', age: 30},
+    {name: 'Alice', age: 25},
+    {name: 'Bob', age: 35}
+];
+
+// Sort by age
+users.sort((a, b) => a.age - b.age);
+console.log(users);
+// [{name: 'Alice', age: 25}, {name: 'John', age: 30}, {name: 'Bob', age: 35}]
+
+// Sort by name
+users.sort((a, b) => a.name.localeCompare(b.name));
+console.log(users);
+// [{name: 'Alice', age: 25}, {name: 'Bob', age: 35}, {name: 'John', age: 30}]
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> Yes | <strong>Returns:</strong> The sorted array</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">flat() - Flatten Nested Arrays</div>
+                    <p>Creates a new array with all sub-array elements concatenated.</p>
+                    <div class="syntax">
+let nested = [1, [2, 3], [4, [5, 6]]];
+
+console.log(nested.flat());     // [1, 2, 3, 4, [5, 6]] (1 level)
+console.log(nested.flat(2));    // [1, 2, 3, 4, 5, 6] (2 levels)
+console.log(nested.flat(Infinity)); // [1, 2, 3, 4, 5, 6] (all levels)
+
+// Remove empty slots
+let arr = [1, 2, , 4, 5];
+console.log(arr.flat()); // [1, 2, 4, 5]
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> New flattened array</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">flatMap() - Map and Flatten</div>
+                    <p>Maps each element using a function, then flattens the result by one level.</p>
+                    <div class="syntax">
+let numbers = [1, 2, 3];
+
+// Regular map returns nested arrays
+let mapped = numbers.map(x => [x, x * 2]);
+console.log(mapped); // [[1, 2], [2, 4], [3, 6]]
+
+// flatMap flattens one level
+let flatMapped = numbers.flatMap(x => [x, x * 2]);
+console.log(flatMapped); // [1, 2, 2, 4, 3, 6]
+
+// Real example: Split sentences into words
+let sentences = ['Hello world', 'How are you'];
+let words = sentences.flatMap(sentence => sentence.split(' '));
+console.log(words); // ['Hello', 'world', 'How', 'are', 'you']
+                    </div>
+                    <div class="tip"><strong>Mutates:</strong> No | <strong>Returns:</strong> New flattened array</div>
+                </div>
+
+                <!-- STATIC METHODS -->
+                <h3>Static Array Methods</h3>
+
+                <div class="method-card">
+                    <div class="method-name">Array.from() - Create Array from Iterable</div>
+                    <p>Creates a new array from an array-like or iterable object.</p>
+                    <div class="syntax">
+// From string
+console.log(Array.from('hello')); // ['h', 'e', 'l', 'l', 'o']
+
+// From Set
+let set = new Set([1, 2, 3, 2, 1]);
+console.log(Array.from(set)); // [1, 2, 3]
+
+// With mapping function
+console.log(Array.from([1, 2, 3], x => x * 2)); // [2, 4, 6]
+
+// Create array of length with values
+console.log(Array.from({length: 5}, (_, i) => i)); // [0, 1, 2, 3, 4]
+
+// Real example: NodeList to Array
+// let divs = Array.from(document.querySelectorAll('div'));
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> New array instance</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Array.isArray() - Check If Array</div>
+                    <p>Determines whether the passed value is an Array.</p>
+                    <div class="syntax">
+console.log(Array.isArray([1, 2, 3]));     // true
+console.log(Array.isArray('hello'));       // false
+console.log(Array.isArray({a: 1}));        // false
+console.log(Array.isArray(null));          // false
+console.log(Array.isArray(undefined));     // false
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> Boolean (true/false)</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Array.of() - Create Array from Arguments</div>
+                    <p>Creates a new Array instance with a variable number of arguments.</p>
+                    <div class="syntax">
+console.log(Array.of(1));           // [1]
+console.log(Array.of(1, 2, 3));     // [1, 2, 3]
+console.log(Array.of(undefined));   // [undefined]
+
+// Compare with Array constructor
+console.log(Array(3));       // [empty × 3]
+console.log(Array.of(3));    // [3]
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> New array instance</div>
+                </div>
+            </section>
+
+            <!-- OBJECTS INTRODUCTION -->
+            <section id="objects-intro">
+                <h2>📦 Objects - Introduction</h2>
+
+                <h3>What is an Object?</h3>
+                <p>An object is a collection of key-value pairs (properties). Objects are used to store related data and functionality together.</p>
+
+                <div class="syntax">
+// Creating objects
+let person = {
+    name: 'John',
+    age: 30,
+    city: 'New York'
+};
+
+// Using Object constructor
+let car = new Object();
+car.brand = 'Toyota';
+car.model = 'Camry';
+
+// Empty object
+let empty = {};
+                </div>
+
+                <h3>Accessing Object Properties</h3>
+                <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30,
+    'favorite color': 'blue' // Key with space
+};
+
+// Dot notation
+console.log(person.name);  // 'John'
+console.log(person.age);   // 30
+
+// Bracket notation
+console.log(person['name']);           // 'John'
+console.log(person['favorite color']); // 'blue' (required for keys with spaces)
+
+// Dynamic property access
+let prop = 'age';
+console.log(person[prop]); // 30
+                </div>
+
+                <h3>Adding and Modifying Properties</h3>
+                <div class="syntax">
+let person = {name: 'John'};
+
+// Add property
+person.age = 30;
+person['city'] = 'New York';
+
+// Modify property
+person.name = 'Jane';
+
+// Delete property
+delete person.city;
+
+console.log(person); // {name: 'Jane', age: 30}
+                </div>
+
+                <h3>Nested Objects</h3>
+                <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30,
+    address: {
+        street: '123 Main St',
+        city: 'New York',
+        country: 'USA'
+    },
+    hobbies: ['reading', 'coding', 'gaming']
+};
+
+// Access nested properties
+console.log(person.address.city);      // 'New York'
+console.log(person.hobbies[0]);        // 'reading'
+console.log(person.address['street']); // '123 Main St'
+                </div>
+
+                <h3>Object Methods</h3>
+                <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30,
+    // Method (function inside object)
+    greet: function() {
+        return `Hello, my name is ${this.name}`;
+    },
+    // Shorthand method syntax
+    sayAge() {
+        return `I am ${this.age} years old`;
+    }
+};
+
+console.log(person.greet());   // 'Hello, my name is John'
+console.log(person.sayAge());  // 'I am 30 years old'
+                </div>
+
+                <div class="note">
+                    <strong>The 'this' keyword:</strong> Inside an object method, 'this' refers to the object itself.
+                </div>
+            </section>
+
+            <!-- OBJECT METHODS -->
+            <section id="object-methods">
+                <h2>🔨 Object Methods - Complete Reference</h2>
+
+                <div class="method-card">
+                    <div class="method-name">Object.keys() - Get All Keys</div>
+                    <p>Returns an array of a given object's own property names.</p>
+                    <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30,
+    city: 'New York'
+};
+
+let keys = Object.keys(person);
+console.log(keys); // ['name', 'age', 'city']
+
+// Real example: Loop through object
+Object.keys(person).forEach(key => {
+    console.log(`${key}: ${person[key]}`);
+});
+// Output:
+// name: John
+// age: 30
+// city: New York
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> Array of strings (property names)</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.values() - Get All Values</div>
+                    <p>Returns an array of a given object's own property values.</p>
+                    <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30,
+    city: 'New York'
+};
+
+let values = Object.values(person);
+console.log(values); // ['John', 30, 'New York']
+
+// Real example: Sum all numeric values
+let scores = {math: 90, english: 85, science: 92};
+let total = Object.values(scores).reduce((sum, score) => sum + score, 0);
+console.log(total); // 267
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> Array of values</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.entries() - Get Key-Value Pairs</div>
+                    <p>Returns an array of a given object's own property [key, value] pairs.</p>
+                    <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30,
+    city: 'New York'
+};
+
+let entries = Object.entries(person);
+console.log(entries);
+// [['name', 'John'], ['age', 30], ['city', 'New York']]
+
+// Real example: Convert to Map
+let map = new Map(Object.entries(person));
+
+// Loop through entries
+for (let [key, value] of Object.entries(person)) {
+    console.log(`${key}: ${value}`);
+}
+
+// Filter and create new object
+let filtered = Object.entries(person)
+    .filter(([key, value]) => typeof value === 'string')
+    .reduce((obj, [key, value]) => {
+        obj[key] = value;
+        return obj;
+    }, {});
+console.log(filtered); // {name: 'John', city: 'New York'}
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> Array of [key, value] arrays</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.assign() - Copy/Merge Objects</div>
+                    <p>Copies all enumerable properties from one or more source objects to a target object.</p>
+                    <div class="syntax">
+// Copy object
+let original = {a: 1, b: 2};
+let copy = Object.assign({}, original);
+console.log(copy); // {a: 1, b: 2}
+
+// Merge objects
+let obj1 = {a: 1, b: 2};
+let obj2 = {b: 3, c: 4};
+let obj3 = {c: 5, d: 6};
+
+let merged = Object.assign({}, obj1, obj2, obj3);
+console.log(merged); // {a: 1, b: 3, c: 5, d: 6}
+
+// Add properties to existing object
+let person = {name: 'John'};
+Object.assign(person, {age: 30, city: 'New York'});
+console.log(person); // {name: 'John', age: 30, city: 'New York'}
+
+// Note: This is a shallow copy
+let original2 = {a: 1, nested: {b: 2}};
+let copy2 = Object.assign({}, original2);
+copy2.nested.b = 100;
+console.log(original2.nested.b); // 100 (affected!)
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> Target object</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.freeze() - Make Immutable</div>
+                    <p>Freezes an object: prevents adding, removing, or changing properties.</p>
+                    <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30
+};
+
+Object.freeze(person);
+
+// These will fail silently (or throw error in strict mode)
+person.name = 'Jane';     // Won't work
+person.city = 'New York'; // Won't work
+delete person.age;        // Won't work
+
+console.log(person); // {name: 'John', age: 30} (unchanged)
+
+// Check if frozen
+console.log(Object.isFrozen(person)); // true
+
+// Note: Shallow freeze only
+let obj = {
+    a: 1,
+    nested: {b: 2}
+};
+Object.freeze(obj);
+obj.nested.b = 100; // This WILL work!
+console.log(obj.nested.b); // 100
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> The frozen object</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.seal() - Prevent Add/Delete</div>
+                    <p>Seals an object: prevents adding or removing properties, but allows modification.</p>
+                    <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30
+};
+
+Object.seal(person);
+
+// Can modify existing properties
+person.name = 'Jane'; // Works
+console.log(person.name); // 'Jane'
+
+// Cannot add or delete
+person.city = 'New York'; // Won't work
+delete person.age;        // Won't work
+
+console.log(person); // {name: 'Jane', age: 30}
+
+// Check if sealed
+console.log(Object.isSealed(person)); // true
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> The sealed object</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.fromEntries() - Create Object from Entries</div>
+                    <p>Transforms a list of key-value pairs into an object.</p>
+                    <div class="syntax">
+// From array of arrays
+let entries = [['name', 'John'], ['age', 30], ['city', 'New York']];
+let person = Object.fromEntries(entries);
+console.log(person); // {name: 'John', age: 30, city: 'New York'}
+
+// From Map
+let map = new Map([['a', 1], ['b', 2]]);
+let obj = Object.fromEntries(map);
+console.log(obj); // {a: 1, b: 2}
+
+// Real example: Transform object values
+let prices = {apple: 100, banana: 50, orange: 75};
+let discounted = Object.fromEntries(
+    Object.entries(prices).map(([fruit, price]) => [fruit, price * 0.9])
+);
+console.log(discounted); // {apple: 90, banana: 45, orange: 67.5}
+
+// Filter object
+let person2 = {name: 'John', age: 30, city: 'New York', country: 'USA'};
+let filtered = Object.fromEntries(
+    Object.entries(person2).filter(([key, value]) => key !== 'country')
+);
+console.log(filtered); // {name: 'John', age: 30, city: 'New York'}
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> New object</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name">Object.hasOwn() - Check Property Existence</div>
+                    <p>Determines if an object has a property with the specified name.</p>
+                    <div class="syntax">
+let person = {
+    name: 'John',
+    age: 30
+};
+
+console.log(Object.hasOwn(person, 'name'));  // true
+console.log(Object.hasOwn(person, 'city'));  // false
+
+// Alternative (older method)
+console.log(person.hasOwnProperty('name')); // true
+
+// Safer than 'in' operator
+console.log('toString' in person);           // true (inherited)
+console.log(Object.hasOwn(person, 'toString')); // false (not own property)
+                    </div>
+                    <div class="tip"><strong>Returns:</strong> Boolean (true/false)</div>
+                </div>
+            </section>
+
+            <!-- ADVANCED TOPICS -->
+            <section id="advanced">
+                <h2>🎯 Advanced Topics</h2>
+
+                <h3>Method Chaining</h3>
+                <p>Combining multiple array methods in sequence for powerful data transformations.</p>
+                <div class="syntax">
+let users = [
+    {name: 'John', age: 25, active: true},
+    {name: 'Jane', age: 30, active: false},
+    {name: 'Bob', age: 35, active: true},
+    {name: 'Alice', age: 28, active: true}
+];
+
+// Get names of active users over 26, sorted alphabetically
+let result = users
+    .filter(user => user.active)           // Active users only
+    .filter(user => user.age > 26)         // Age > 26
+    .map(user => user.name)                // Extract names
+    .sort();                                // Sort alphabetically
+
+console.log(result); // ['Alice', 'Bob']
+
+// Calculate average age of active users
+let avgAge = users
+    .filter(user => user.active)
+    .map(user => user.age)
+    .reduce((sum, age) => sum + age, 0) / 
+    users.filter(user => user.active).length;
+
+console.log(avgAge); // 29.33...
+                </div>
+
+                <h3>Destructuring</h3>
+                <p>Extracting values from arrays and objects into variables.</p>
+
+                <h4>Array Destructuring</h4>
+                <div class="syntax">
+// Basic destructuring
+let fruits = ['apple', 'banana', 'orange'];
+let [first, second, third] = fruits;
+console.log(first);  // 'apple'
+console.log(second); // 'banana'
+
+// Skip elements
+let [a, , c] = fruits;
+console.log(a); // 'apple'
+console.log(c); // 'orange'
+
+// Rest operator
+let numbers = [1, 2, 3, 4, 5];
+let [one, two, ...rest] = numbers;
+console.log(one);  // 1
+console.log(two);  // 2
+console.log(rest); // [3, 4, 5]
+
+// Default values
+let [x = 10, y = 20, z = 30] = [1, 2];
+console.log(x, y, z); // 1, 2, 30
+
+// Swapping variables
+let a = 1, b = 2;
+[a, b] = [b, a];
+console.log(a, b); // 2, 1
+                </div>
+
+                <h4>Object Destructuring</h4>
+                <div class="syntax">
+// Basic destructuring
+let person = {name: 'John', age: 30, city: 'New York'};
+let {name, age, city} = person;
+console.log(name); // 'John'
+console.log(age);  // 30
+
+// Different variable names
+let {name: personName, age: personAge} = person;
+console.log(personName); // 'John'
+
+// Default values
+let {name, age, country = 'USA'} = person;
+console.log(country); // 'USA'
+
+// Nested destructuring
+let user = {
+    name: 'John',
+    address: {
+        city: 'New York',
+        country: 'USA'
+    }
+};
+let {name, address: {city, country}} = user;
+console.log(city);    // 'New York'
+console.log(country); // 'USA'
+
+// Rest operator
+let {name, ...rest} = person;
+console.log(rest); // {age: 30, city: 'New York'}
+
+// Function parameters
+function greet({name, age}) {
+    return `Hello ${name}, you are ${age} years old`;
+}
+console.log(greet(person)); // 'Hello John, you are 30 years old'
+                </div>
+
+                <h3>Spread Operator (...)</h3>
+                <div class="syntax">
+// Array spreading
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let combined = [...arr1, ...arr2];
+console.log(combined); // [1, 2, 3, 4, 5, 6]
+
+// Copy array
+let original = [1, 2, 3];
+let copy = [...original];
+
+// Add elements while copying
+let extended = [...original, 4, 5, 6];
+
+// Object spreading
+let person = {name: 'John', age: 30};
+let employee = {...person, role: 'Developer', salary: 50000};
+console.log(employee);
+// {name: 'John', age: 30, role: 'Developer', salary: 50000}
+
+// Copy object
+let personCopy = {...person};
+
+// Override properties
+let updated = {...person, age: 31};
+console.log(updated); // {name: 'John', age: 31}
+
+// Merge objects
+let obj1 = {a: 1, b: 2};
+let obj2 = {b: 3, c: 4};
+let merged = {...obj1, ...obj2};
+console.log(merged); // {a: 1, b: 3, c: 4}
+
+// Function arguments
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4, 5)); // 15
+                </div>
+
+                <h3>Common Patterns and Best Practices</h3>
+
+                <h4>1. Remove Duplicates</h4>
+                <div class="syntax">
+let numbers = [1, 2, 3, 2, 4, 3, 5, 1];
+
+// Using Set
+let unique = [...new Set(numbers)];
+console.log(unique); // [1, 2, 3, 4, 5]
+
+// Using filter
+let unique2 = numbers.filter((num, index, arr) => arr.indexOf(num) === index);
+console.log(unique2); // [1, 2, 3, 4, 5]
+                </div>
+
+                <h4>2. Group By Property</h4>
+                <div class="syntax">
+let users = [
+    {name: 'John', department: 'IT'},
+    {name: 'Jane', department: 'HR'},
+    {name: 'Bob', department: 'IT'},
+    {name: 'Alice', department: 'Sales'}
+];
+
+let byDept = users.reduce((acc, user) => {
+    if (!acc[user.department]) {
+        acc[user.department] = [];
+    }
+    acc[user.department].push(user);
+    return acc;
+}, {});
+
+console.log(byDept);
+// {
+//   IT: [{name: 'John', department: 'IT'}, {name: 'Bob', department: 'IT'}],
+//   HR: [{name: 'Jane', department: 'HR'}],
+//   Sales: [{name: 'Alice', department: 'Sales'}]
+// }
+                </div>
+
+                <h4>3. Deep Copy Object</h4>
+                <div class="syntax">
+let original = {
+    name: 'John',
+    age: 30,
+    address: {
+        city: 'New York',
+        country: 'USA'
+    }
+};
+
+// Shallow copy (nested objects shared!)
+let shallow = {...original};
+shallow.address.city = 'Los Angeles';
+console.log(original.address.city); // 'Los Angeles' (affected!)
+
+// Deep copy option 1: JSON (limited - no functions, dates)
+let deep1 = JSON.parse(JSON.stringify(original));
+
+// Deep copy option 2: structuredClone (modern browsers)
+let deep2 = structuredClone(original);
+                </div>
+
+                <h4>4. Conditional Object Properties</h4>
+                <div class="syntax">
+let includeAge = true;
+let includeCity = false;
+
+let person = {
+    name: 'John',
+    ...(includeAge && {age: 30}),
+    ...(includeCity && {city: 'New York'})
+};
+
+console.log(person); // {name: 'John', age: 30}
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-card">
+                        <h4>Mutating Methods</h4>
+                        <p>These methods modify the original array:</p>
+                        <ul>
+                            <li>push()</li>
+                            <li>pop()</li>
+                            <li>shift()</li>
+                            <li>unshift()</li>
+                            <li>splice()</li>
+                            <li>reverse()</li>
+                            <li>sort()</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>Non-Mutating Methods</h4>
+                        <p>These methods return a new array:</p>
+                        <ul>
+                            <li>map()</li>
+                            <li>filter()</li>
+                            <li>slice()</li>
+                            <li>concat()</li>
+                            <li>flat()</li>
+                            <li>flatMap()</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRACTICE SECTION -->
+            <section id="practice">
+                <h2>💻 Interactive Practice</h2>
+
+                <div class="interactive-demo">
+                    <h3>Array Method Practice</h3>
+                    <p>Try different array methods on the data below:</p>
+                    
+                    <textarea id="arrayInput" rows="8">
+[
+    {name: 'John', age: 25, salary: 50000},
+    {name: 'Jane', age: 30, salary: 60000},
+    {name: 'Bob', age: 35, salary: 70000},
+    {name: 'Alice', age: 28, salary: 55000}
+]
+                    </textarea>
+
+                    <textarea id="arrayCode" rows="6" placeholder="Write your code here (e.g., data.filter(item => item.age > 28))">
+data.filter(item => item.age > 28)
+                    </textarea>
+
+                    <button onclick="runArrayCode()">Run Code</button>
+                    <button onclick="clearArrayOutput()">Clear Output</button>
+
+                    <div class="demo-output" id="arrayOutput">Output will appear here...</div>
+
+                    <h4>Try These Exercises:</h4>
+                    <ul>
+                        <li>Get all people over 27: <code>data.filter(item => item.age > 27)</code></li>
+                        <li>Get just the names: <code>data.map(item => item.name)</code></li>
+                        <li>Calculate total salary: <code>data.reduce((sum, item) => sum + item.salary, 0)</code></li>
+                        <li>Sort by age: <code>data.sort((a, b) => a.age - b.age)</code></li>
+                        <li>Find person named 'Bob': <code>data.find(item => item.name === 'Bob')</code></li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>Object Method Practice</h3>
+                    <p>Try different object methods:</p>
+                    
+                    <textarea id="objectInput" rows="8">
+{
+    name: 'John',
+    age: 30,
+    city: 'New York',
+    country: 'USA',
+    salary: 50000
+}
+                    </textarea>
+
+                    <textarea id="objectCode" rows="6" placeholder="Write your code here (e.g., Object.keys(data))">
+Object.keys(data)
+                    </textarea>
+
+                    <button onclick="runObjectCode()">Run Code</button>
+                    <button onclick="clearObjectOutput()">Clear Output</button>
+
+                    <div class="demo-output" id="objectOutput">Output will appear here...</div>
+
+                    <h4>Try These Exercises:</h4>
+                    <ul>
+                        <li>Get all keys: <code>Object.keys(data)</code></li>
+                        <li>Get all values: <code>Object.values(data)</code></li>
+                        <li>Get entries: <code>Object.entries(data)</code></li>
+                        <li>Check if has 'age': <code>Object.hasOwn(data, 'age')</code></li>
+                        <li>Add new property: <code>Object.assign(data, {role: 'Developer'})</code></li>
+                    </ul>
+                </div>
+
+                <div class="note">
+                    <strong>Quick Reference Table:</strong>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Need to...</th>
+                                <th>Use...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Transform each element</td><td>map()</td></tr>
+                            <tr><td>Filter elements by condition</td><td>filter()</td></tr>
+                            <tr><td>Find first matching element</td><td>find()</td></tr>
+                            <tr><td>Check if element exists</td><td>includes() or some()</td></tr>
+                            <tr><td>Check if all match condition</td><td>every()</td></tr>
+                            <tr><td>Reduce to single value</td><td>reduce()</td></tr>
+                            <tr><td>Loop through elements</td><td>forEach()</td></tr>
+                            <tr><td>Copy portion of array</td><td>slice()</td></tr>
+                            <tr><td>Add/remove at any position</td><td>splice()</td></tr>
+                            <tr><td>Get object keys</td><td>Object.keys()</td></tr>
+                            <tr><td>Get object values</td><td>Object.values()</td></tr>
+                            <tr><td>Merge objects</td><td>Object.assign() or {...spread}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Array code runner
+        function runArrayCode() {
+            const input = document.getElementById('arrayInput').value;
+            const code = document.getElementById('arrayCode').value;
+            const output = document.getElementById('arrayOutput');
+
+            try {
+                const data = eval(input);
+                const result = eval(code);
+                output.textContent = JSON.stringify(result, null, 2);
+                output.style.color = '#fff';
+            } catch (error) {
+                output.textContent = 'Error: ' + error.message;
+                output.style.color = '#ff6b6b';
+            }
+        }
+
+        function clearArrayOutput() {
+            document.getElementById('arrayOutput').textContent = 'Output will appear here...';
+            document.getElementById('arrayOutput').style.color = '#fff';
+        }
+
+        // Object code runner
+        function runObjectCode() {
+            const input = document.getElementById('objectInput').value;
+            const code = document.getElementById('objectCode').value;
+            const output = document.getElementById('objectOutput');
+
+            try {
+                const data = eval('(' + input + ')');
+                const result = eval(code);
+                output.textContent = JSON.stringify(result, null, 2);
+                output.style.color = '#fff';
+            } catch (error) {
+                output.textContent = 'Error: ' + error.message;
+                output.style.color = '#ff6b6b';
+            }
+        }
+
+        function clearObjectOutput() {
+            document.getElementById('objectOutput').textContent = 'Output will appear here...';
+            document.getElementById('objectOutput').style.color = '#fff';
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
